@@ -21,4 +21,14 @@ export class NabvarComponent implements OnInit {
   ngOnInit(): void {
   }
 
+
+  url_login(){
+    this.router.navigate(['login']);
+  }
+
+
+  url_signup(){
+    this.router.navigate(['signup']);
+  }
+
 }

@@ -1,29 +1,26 @@
 
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <a class="navbar-brand" href="#">
-            <img src="../../../assets/img/logo_principal.png" class="d-inline-block align-top" alt="">
+            <img src="../../../assets/img/logo_principal.png" width="50" class="d-inline-block align-top" alt="">
         </a>
 
      
 
         <div class="collapse navbar-collapse" id="navbarText">
             <ul class="navbar-nav mr-auto">
-
                 <div *ngIf="user$; else login">
                     <li class="nav-item">
                         <a class="nav-link" href="#">Logout</a>
                     </li>
                 </div>
-
                 <ng-template #login>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Login</a>
+                        <a class="nav-link" (click)="url_login()">Login</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Signup</a>
+                        <a class="nav-link" (click)="url_signup()">Signup</a>
                     </li>
                 </ng-template>
-              
             </ul>
         </div>
     </nav>
