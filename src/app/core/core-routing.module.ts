@@ -13,6 +13,11 @@ const routes: Routes = [
     path: 'signup', 
     loadChildren: () => import('./signup/signup.module').then(m => m.SignupModule),
     // canActivate: [AuthGuard] 
+  },
+  { 
+    path: 'profile', 
+    loadChildren: () => import('./profile/profile.module').then(m => m.ProfileModule),
+    // canActivate: [AuthGuard] 
   }
 ];
 

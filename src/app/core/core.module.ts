@@ -17,10 +17,10 @@ const routes: Routes = [
     CommonModule,
     HttpClientModule,
     RouterModule.forRoot(routes),
-    SharedModule,
+    SharedModule
   ],
   exports: [
-    SharedModule,
+    SharedModule
   ]
 })
 export class CoreModule { }
