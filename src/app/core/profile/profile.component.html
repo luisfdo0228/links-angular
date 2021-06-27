@@ -1,40 +1,55 @@
 <div class="container rounded bg-white mt-5 mb-5">
     <div class="row">
-        <div class="col-md-4 border-right">
+        
+        <div id="img-profile" class="col-md-4 border-right">
             <div class="picture-container">
                 <div class="picture">
                     <img 
                         [src]="url ? url : '../../../assets/img/user-icon.png'" class="picture-src" id="wizardPicturePreview" title="">
-                    <input type="file" id="wizard-picture" class="" (change)="onSelectFile($event)">
+                    <input type="file" id="wizard-picture" class="">
                 </div>
             </div>
         </div>
+        
         <div class="col-md-8 border-right">
             
-                <div class="p-3 py-5">
-                    <form [formGroup]="linksForm">
-                       
-                        <div class="row mt-2">
-                            <div class="col-md-12">
-                                <label class="labels">Url To Save</label>
-                                <input type="text" [class.is-invalid]="linksForm.get('url').invalid && linksForm.get('url').touched" class="form-control" placeholder="nombre de usuario" formControlName="url">
-                            </div>
+            <div id="div-links" class="p-3 py-5">
+                <form [formGroup]="linksForm">
+                    <div class="row mt-2">
+                        <div class="col-md-12">
+                            <label class="labels">Url To Save</label>
+                            <input type="text" [class.is-invalid]="linksForm.get('url').invalid && linksForm.get('url').touched" class="form-control inp-t" formControlName="url">
                         </div>
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col-md-12">
+                            <label class="labels">Name of Url</label>
+                            <input type="text" [class.is-invalid]="linksForm.get('name').invalid && linksForm.get('name').touched" class="form-control inp-t" formControlName="name">
+                        </div>
+                    </div>
+                    <div class="mt-5 text-center">
+                        <!-- <button  class="btn btn-primary profile-button" (click)="submit()" [disabled]="!linksForm.valid" type="button">Guardar</button> -->
+                        <button class="btn btn-primary profile-button"  [disabled]="!linksForm.valid" type="button">Guardar</button>
+                    </div>
+                </form>
+            </div>
 
-                        <div class="row mt-2">
-                            <div class="col-md-12">
-                                <label class="labels">Name of Url</label>
-                                <input type="text" [class.is-invalid]="linksForm.get('name').invalid && linksForm.get('name').touched" class="form-control" placeholder="nombre de usuario" formControlName="name">
-                            </div>
-                        </div>
-                        
 
-                        <div class="mt-5 text-center">
-                            <button  class="btn btn-primary profile-button" (click)="submit()" [disabled]="!linksForm.valid" type="button">Guardar</button>
+            <div class="p-3 py-5">
+                <div class="row div-links-info">
+                    <div class="col-md-10">
+                        <a target="_blank" href="https://www.freecodecamp.org" class="url-title">www.url.com</a>
+                        <div class="text-name-link">
+                            kjshdkashdjkashdkjhaskdjhaskjdhasjkdhkajshdkahaskdhkjashdkjsahdjkashd
                         </div>
-                    </form>
-                    
+                    </div>
+                    <div class="col-md-2">
+                        <i class="fa fa-trash float-right" aria-hidden="true"></i>
+                    </div>
                 </div>
+            </div>
+
+                
             
         </div>
     </div>

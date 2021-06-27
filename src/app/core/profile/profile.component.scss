@@ -24,7 +24,15 @@
 }
 
 .labels {
-    font-size: 20px
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 20px;
+    display: flex;
+    align-items: center;
+    letter-spacing: 0.25px;
+    color: #333333;
 }
 
 .add-experience:hover {
@@ -61,6 +69,7 @@
     overflow: hidden;
     transition: all 0.2s;
     -webkit-transition: all 0.2s;
+    margin-top: 30px;
 }
 
 .picture:hover{
@@ -80,5 +89,63 @@
 
 .picture-src{
     width: 100%;
-    
+}
+
+#img-profile{
+    background: #FFFFFF;
+    box-shadow: 0px 0px 30px rgb(199 199 199 / 55%);
+    border-radius: 6px;
+    height: 200px;
+}
+
+#div-links{
+    background: #FFFFFF;
+    box-shadow: 0px 0px 30px rgb(199 199 199 / 55%);
+    border-radius: 6px;
+}
+
+.div-links-info{
+    background: #FFFFFF;
+    box-shadow: 0px 0px 30px rgb(199 199 199 / 55%);
+    border-radius: 6px;
+    padding: 20px;
+}
+
+.text-name-link{
+    word-wrap: break-word;
+    padding-top: 20px;
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 20px;
+    letter-spacing: 0.25px;
+    color: #333333;
+}
+
+
+.fa-trash{
+    font-size: 30px;
+    color: red;
+    cursor: pointer;
+}
+
+.url-title{
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 25px;
+    line-height: 20px;
+    display: flex;
+    align-items: center;
+    letter-spacing: 0.25px;
+    color: #008DF3;
+    cursor: pointer;
+}
+
+.inp-t{
+    background: #FFFFFF;
+    border: 1px solid #DDDDDD;
+    box-sizing: border-box;
+    border-radius: 4px;
 }
