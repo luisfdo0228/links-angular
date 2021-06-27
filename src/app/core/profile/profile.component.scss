@@ -3,25 +3,7 @@
     border-color: #173e53
 }
 
-.profile-button {
-    background: #173e53;
-    box-shadow: none;
-    border: none
-}
 
-.profile-button:hover {
-    background: #173e53
-}
-
-.profile-button:focus {
-    background: #173e53;
-    box-shadow: none
-}
-
-.profile-button:active {
-    background: #173e53;
-    box-shadow: none
-}
 
 .labels {
     font-family: Montserrat;
@@ -95,7 +77,7 @@
     background: #FFFFFF;
     box-shadow: 0px 0px 30px rgb(199 199 199 / 55%);
     border-radius: 6px;
-    height: 200px;
+    height: 292px;
 }
 
 #div-links{
@@ -148,4 +130,35 @@
     border: 1px solid #DDDDDD;
     box-sizing: border-box;
     border-radius: 4px;
+}
+
+
+.profile-button{
+    width: 100px;
+}
+
+#logout{
+    border: 2px solid #007AFF;
+    box-sizing: border-box;
+    border-radius: 4px;
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: 800;
+    font-size: 14px;
+    line-height: 17px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    letter-spacing: 0.75px;
+    color: #007AFF;
+}
+
+.info-user{
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 15px;
+    line-height: 20px;
+    letter-spacing: 0.25px;
+    color: #333333;
 }

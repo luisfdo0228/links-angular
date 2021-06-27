@@ -1,6 +1,13 @@
 <div class="container rounded bg-white mt-5 mb-5">
     <div class="row">
-        
+        <div class="col-md-4">
+            <img src="../../../assets/img/logo_transparent.png" width="250" class="rounded mx-auto d-block">
+        </div>
+        <div class="col-md-8">
+            <button id="logout" class="btn float-right">LOGOUT</button>
+        </div>
+    </div>
+    <div class="row">
         <div id="img-profile" class="col-md-4 border-right">
             <div class="picture-container">
                 <div class="picture">
@@ -9,10 +16,16 @@
                     <input type="file" id="wizard-picture" class="">
                 </div>
             </div>
-        </div>
-        
-        <div class="col-md-8 border-right">
+            <div class="text-center">
+                <span class="info-user">Jeff Brown</span>
+                <br/>
+                <span class="info-user">jeff.brown@example.com</span>
+            </div>
             
+            <!-- <span>jeff.brown@example.com</span> -->
+
+        </div>
+        <div class="col-md-8 border-right">
             <div id="div-links" class="p-3 py-5">
                 <form [formGroup]="linksForm">
                     <div class="row mt-2">
@@ -29,12 +42,10 @@
                     </div>
                     <div class="mt-5 text-center">
                         <!-- <button  class="btn btn-primary profile-button" (click)="submit()" [disabled]="!linksForm.valid" type="button">Guardar</button> -->
-                        <button class="btn btn-primary profile-button"  [disabled]="!linksForm.valid" type="button">Guardar</button>
+                        <button class="btn btn-primary float-right profile-button" [disabled]="!linksForm.valid" type="button">ADD</button>
                     </div>
                 </form>
             </div>
-
-
             <div class="p-3 py-5">
                 <div class="row div-links-info">
                     <div class="col-md-10">
@@ -48,9 +59,6 @@
                     </div>
                 </div>
             </div>
-
-                
-            
         </div>
     </div>
 </div>
