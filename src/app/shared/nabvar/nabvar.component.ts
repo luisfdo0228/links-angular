@@ -12,16 +12,11 @@ import { AuthService } from 'src/app/api/auth/auth.service';
 export class NabvarComponent implements OnInit {
 
 
-  userLogin = false;
 
 
 
   constructor(public authSvc:AuthService, private router:Router) {
-    this.userLogin = this.authSvc.isLoggedIn('')
-    this.authSvc.changeLoginStatus$.subscribe((loggedStatus:boolean)=>{
-      console.log(loggedStatus)
-      this.userLogin = loggedStatus;
-    })
+    
   }
 
   ngOnInit(): void {

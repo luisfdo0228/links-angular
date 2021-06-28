@@ -4,18 +4,13 @@
             <img src="../../../assets/img/logo_principal.png" width="50" class="d-inline-block align-top" alt="">
         </a>
 
-     
-
         <div class="collapse navbar-collapse" id="navbarText">
             <ul class="navbar-nav mr-auto">
-                <li *ngIf="!userLogin;" class="nav-item">
+                <li class="nav-item">
                     <a class="nav-link" (click)="url_login()">Login</a>
                 </li>
-                <li *ngIf="!userLogin;" class="nav-item">
+                <li class="nav-item">
                     <a class="nav-link" (click)="url_signup()">Signup</a>
-                </li>
-                <li *ngIf="userLogin;" class="nav-item">
-                    <a class="nav-link" href="#">Logout</a>
                 </li>
             </ul>
         </div>

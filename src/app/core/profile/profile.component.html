@@ -24,38 +24,43 @@
         </div>
         <div class="col-md-8 border-right">
             <div id="div-links" class="p-3 py-5">
-                <form [formGroup]="linksForm">
+                <form [formGroup]="linksForm" (ngSubmit)="add()">
                     <div class="row mt-2">
                         <div class="col-md-12">
                             <label class="labels">Url To Save</label>
+                            <div><span class="info-alert" *ngIf="!linksForm.valid">coloca una url</span></div>
                             <input type="text" [class.is-invalid]="linksForm.get('url').invalid && linksForm.get('url').touched" class="form-control inp-t" formControlName="url">
                         </div>
                     </div>
                     <div class="row mt-2">
                         <div class="col-md-12">
                             <label class="labels">Name of Url</label>
+                            <div><span class="info-alert" *ngIf="!linksForm.valid">coloca una nombre</span></div>
                             <input type="text" [class.is-invalid]="linksForm.get('name').invalid && linksForm.get('name').touched" class="form-control inp-t" formControlName="name">
                         </div>
                     </div>
                     <div class="mt-5 text-center">
-                        <!-- <button  class="btn btn-primary profile-button" (click)="submit()" [disabled]="!linksForm.valid" type="button">Guardar</button> -->
-                        <button class="btn btn-primary float-right profile-button" [disabled]="!linksForm.valid" type="button">ADD</button>
+                        <button class="btn btn-primary float-right profile-button" [disabled]="!linksForm.valid" type="submit">ADD</button>
                     </div>
                 </form>
             </div>
-            <div class="p-3 py-5">
-                <div class="row div-links-info">
-                    <div class="col-md-10">
-                        <a target="_blank" href="https://www.freecodecamp.org" class="url-title">www.url.com</a>
-                        <div class="text-name-link">
-                            kjshdkashdjkashdkjhaskdjhaskjdhasjkdhkajshdkahaskdhkjashdkjsahdjkashd
+            
+            <div *ngFor="let link of links;">
+                <div id="{{link.id}}" class="panel-links" >
+                    <div class="row div-links-info">
+                        <div class="col-md-10">
+                            <a target="_blank" href="https://www.freecodecamp.org" class="url-title">{{link.url}}</a>
+                            <div class="text-name-link">
+                                {{link.name}}
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-md-2">
-                        <i class="fa fa-trash float-right" aria-hidden="true"></i>
+                        <div class="col-md-2">
+                            <i class="fa fa-trash float-right" (click)="delete(link.id)" aria-hidden="true"></i>
+                        </div>
                     </div>
                 </div>
             </div>
+            
         </div>
     </div>
 </div>
