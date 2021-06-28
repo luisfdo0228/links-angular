@@ -1,0 +1,37 @@
+<div id="div-form" class="container">
+    <img src="../../../assets/img/logo_transparent.png" width="250" class="rounded mx-auto d-block">
+    <div class="abs-center">
+        <form id="form-data" class="border p-3 form" [formGroup]="signupForm" (ngSubmit)="onSignup()">
+            <div *ngIf="viewRegister" class="col text-center">
+                <span class="user-register">Usuario Registrado</span>
+            </div>
+            <h3 class="title-form">SIGNUP</h3>
+            <div class="form-group">
+                <label class="text-label" for="name">Full name</label>
+                <div><span class="info-alert" *ngIf="!signupForm.valid">coloca el nombre completo</span></div>
+                <input type="name" [class.is-invalid]="signupForm.get('name').invalid && signupForm.get('name').touched"  name="name" formControlName="name" id="name" class="form-control form-links">
+            </div>
+            <div class="form-group">
+                <label class="text-label" for="email">Your Email</label>
+                <div><span class="info-alert" *ngIf="!signupForm.valid">coloca un email valido</span></div>
+                <input type="email" [class.is-invalid]="signupForm.get('email').invalid && signupForm.get('email').touched" name="email" formControlName="email" id="email" class="form-control form-links">
+            </div>
+            <div class="form-group">
+                <label class="text-label" for="password">Password</label>
+                <div><span class="info-alert" *ngIf="!signupForm.valid">coloca un password</span></div>
+                <input type="password" [class.is-invalid]="signupForm.get('password').invalid && signupForm.get('password').touched" name="password" formControlName="password" id="password" class="form-control form-links">
+            </div>
+            <div class="row">
+                <div class="col text-center">
+                    <button type="submit" [disabled]="!signupForm.valid" class="btn btn-primary btn-w">SIGNUP</button>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col text-center">
+                    <span class="term">By Creating account You agree to the</span><br>
+                    <span class="term"><a class="term-a" target="_blank">Terms of use</a> and <a class="term-a" target="_blank">Privacy Policy</a></span>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,67 @@
+<div class="container rounded bg-white mt-5 mb-5">
+    <div class="row">
+        <div class="col-md-4">
+            <img src="../../../assets/img/logo_transparent.png" width="250" class="rounded mx-auto d-block">
+        </div>
+        <div class="col-md-8">
+            <button id="logout" (click)="onLogout()" class="btn float-right">LOGOUT</button>
+        </div>
+    </div>
+    <div class="row">
+        <div id="img-profile" class="col-md-4 border-right">
+            <div class="picture-container">
+                <div class="picture">
+                    <img 
+                        [src]="url ? url : '../../../assets/img/user-icon.png'" class="picture-src" id="wizardPicturePreview" title="">
+                    <input type="file" id="wizard-picture" class="">
+                </div>
+            </div>
+            <div class="text-center">
+                <span class="info-user">Jeff Brown</span>
+                <br/>
+                <span class="info-user">jeff.brown@example.com</span>
+            </div>
+        </div>
+        <div class="col-md-8 border-right">
+            <div id="div-links" class="p-3 py-5">
+                <form [formGroup]="linksForm" (ngSubmit)="add()">
+                    <div class="row mt-2">
+                        <div class="col-md-12">
+                            <label class="labels">Url To Save</label>
+                            <div><span class="info-alert" *ngIf="!linksForm.valid">coloca una url</span></div>
+                            <input type="text" [class.is-invalid]="linksForm.get('url').invalid && linksForm.get('url').touched" class="form-control inp-t" formControlName="url">
+                        </div>
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col-md-12">
+                            <label class="labels">Name of Url</label>
+                            <div><span class="info-alert" *ngIf="!linksForm.valid">coloca una nombre</span></div>
+                            <input type="text" [class.is-invalid]="linksForm.get('name').invalid && linksForm.get('name').touched" class="form-control inp-t" formControlName="name">
+                        </div>
+                    </div>
+                    <div class="mt-5 text-center">
+                        <button class="btn btn-primary float-right profile-button" [disabled]="!linksForm.valid" type="submit">ADD</button>
+                    </div>
+                </form>
+            </div>
+            
+            <div *ngFor="let link of links;">
+                <div id="{{link.id}}" class="panel-links" >
+                    <div class="row div-links-info">
+                        <div class="col-md-10">
+                            <a target="_blank" href="https://www.freecodecamp.org" class="url-title">{{link.url}}</a>
+                            <div class="text-name-link">
+                                {{link.name}}
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <i class="fa fa-trash float-right" (click)="delete(link.id)" aria-hidden="true"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</div>
+
