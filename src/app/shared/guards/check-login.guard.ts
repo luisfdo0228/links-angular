@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
-import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree } from '@angular/router';
+import { ActivatedRouteSnapshot, CanActivate, RouterStateSnapshot, UrlTree } from '@angular/router';
 import { Observable } from 'rxjs';
-import { AuthService } from '../../api/auth/auth.service';
+import { map, take } from 'rxjs/operators';
+import { AuthService } from 'src/app/api/auth/auth.service';
+import { UserResponse } from '../models/user.interface';
 
 
 
@@ -14,11 +16,13 @@ export class CheckLoginGuard implements CanActivate {
 
   }
 
-  canActivate(): Observable<boolean> {
+  canActivate(
+    next: ActivatedRouteSnapshot,
+    state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
 
-    return
-
-    return true;
+      if(this.authSvc.isLoggedIn(state.url)){
+        return true;
+      }
+      return false;
   }
-  
 }

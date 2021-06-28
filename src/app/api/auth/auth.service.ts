@@ -2,29 +2,31 @@ import { catchError, map } from 'rxjs/operators';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { HttpClient } from '@angular/common/http';
-import { BehaviorSubject, Observable, throwError } from 'rxjs';
-import { UserResponse, User } from 'src/app/shared/models/user.interface';
+import { Subject, Observable, throwError } from 'rxjs';
+import { UserResponse, User, UserSignup, UserResponseRegister } from 'src/app/shared/models/user.interface';
 import {JwtHelperService} from '@auth0/angular-jwt'
+import { Router } from '@angular/router';
 
 
 const helper = new JwtHelperService();
 @Injectable()
 export class AuthService {
 
-  private loggedIn = new BehaviorSubject<boolean>(false);
 
   constructor(
-    private http:HttpClient
+    private http:HttpClient,
+    private router:Router
   ) {
-    // this.checkToken()
   }
 
+  readonly ISLOGGEDKEY = 'islogged';
+  public urlUsuarioIntentaAcceder = '';
 
 
+  public changeLoginStatusSubject = new Subject<boolean>();
+  public changeLoginStatus$ = this.changeLoginStatusSubject.asObservable();
   
-  get isLogged():Observable<boolean>{
-    return this.loggedIn.asObservable();
-  }
+  
 
 
   /**
@@ -36,9 +38,10 @@ export class AuthService {
   login(authData:User): Observable<UserResponse | void>{
     return this.http
               .post<UserResponse>(`${environment.API_URL}/login`, authData)
-              .pipe( map( (res:UserResponse) => {
-                      this.saveToken(res.token)
-                      return res;
+              .pipe( map( (user:UserResponse) => {
+                      this.saveLocalStorage(user.token);
+                      this.changeLoginStatusSubject.next(true);
+                      return user;
                     }),
                     catchError( (err)=> this.handlerError(err)  )
               );
@@ -51,7 +54,14 @@ export class AuthService {
    * @param password 
    * @description 
    */
-  async register(email:string, password:string){
+  register(authData:UserSignup): Observable<UserResponseRegister | void>{
+    return this.http
+              .post<UserResponseRegister>(`${environment.API_URL}/register`, authData)
+              .pipe( map( (user:UserResponseRegister) => {
+                      return user;
+                    }),
+                    catchError( (err)=> this.handlerError(err)  )
+              );
 
   }
 
@@ -64,27 +74,24 @@ export class AuthService {
    */
   logout(): void{
     localStorage.removeItem('token')
-    this.loggedIn.next(false);
+    this.changeLoginStatusSubject.next(false);
+    this.router.navigate(['/login']);
   }
 
 
-  // private checkToken():void{
-  //   const userToken = localStorage.getItem('token');
-  //   // const isExpired = helper.isTokenExpired('eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI1NGE4Y2U2MThlOTFiMGIxMzY2NWUyZjkiLCJpYXQiOiIxNDI0MTgwNDg0IiwiZXhwIjoiMTQyNTM5MDE0MiJ9.yk4nouUteW54F1HbWtgg1wJxeDjqDA_8AhUPyjE5K0U')
-  //   if(userToken){
-  //     const isExpired = false
-  //     // this.logout()
-  //   } else {
-  //     const isExpired = true
-  //     this.loggedIn.next(true);
-  //   }
-  //   // set userIsLogged = isExpired
-  // }
+  isLoggedIn(url: string) {
+    const isLogged = localStorage.getItem('token');
+    if (!isLogged) {
+      this.urlUsuarioIntentaAcceder = url;
+      return false;
+    }
+    return true;
+  }
 
-  private saveToken(token: string):void{
+
+
+  private saveLocalStorage(token: string):void{
     localStorage.setItem('token', token)
-    this.loggedIn.next(true);
-    // set userIsLogged = false
   }
 
   private handlerError(err:any):Observable<never>{

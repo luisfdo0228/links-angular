@@ -11,14 +11,21 @@ import { AuthService } from 'src/app/api/auth/auth.service';
 })
 export class NabvarComponent implements OnInit {
 
-  // public user$: Observable<any> = this.authSvc.afAuth.user;
-  public user$ = false;
+
+  userLogin = false;
 
 
 
-  constructor(public authSvc:AuthService, private router:Router) { }
+  constructor(public authSvc:AuthService, private router:Router) {
+    this.userLogin = this.authSvc.isLoggedIn('')
+    this.authSvc.changeLoginStatus$.subscribe((loggedStatus:boolean)=>{
+      console.log(loggedStatus)
+      this.userLogin = loggedStatus;
+    })
+  }
 
   ngOnInit(): void {
+    
   }
 
 

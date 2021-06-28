@@ -4,6 +4,8 @@ import { SharedModule } from '../shared/shared.module';
 import { HttpClientModule} from "@angular/common/http";
 import { RouterModule, Routes } from '@angular/router/';
 import { CoreRoutingModule } from './core-routing.module';
+// import { AuthService } from '../api/auth/auth.service';
+
 
 const routes: Routes = [
 
@@ -12,6 +14,7 @@ const routes: Routes = [
 
 @NgModule({
   declarations: [],
+  // providers:[AuthService],
   imports: [
     CoreRoutingModule,
     CommonModule,

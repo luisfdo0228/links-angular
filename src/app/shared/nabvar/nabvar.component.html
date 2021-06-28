@@ -8,19 +8,15 @@
 
         <div class="collapse navbar-collapse" id="navbarText">
             <ul class="navbar-nav mr-auto">
-                <div *ngIf="user$; else login">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Logout</a>
-                    </li>
-                </div>
-                <ng-template #login>
-                    <li class="nav-item">
-                        <a class="nav-link" (click)="url_login()">Login</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" (click)="url_signup()">Signup</a>
-                    </li>
-                </ng-template>
+                <li *ngIf="!userLogin;" class="nav-item">
+                    <a class="nav-link" (click)="url_login()">Login</a>
+                </li>
+                <li *ngIf="!userLogin;" class="nav-item">
+                    <a class="nav-link" (click)="url_signup()">Signup</a>
+                </li>
+                <li *ngIf="userLogin;" class="nav-item">
+                    <a class="nav-link" href="#">Logout</a>
+                </li>
             </ul>
         </div>
     </nav>

@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
 import { AuthService } from 'src/app/api/auth/auth.service';
 
 
@@ -22,8 +21,7 @@ export class ProfileComponent implements OnInit {
 
 
   constructor(
-    private authSvc: AuthService,
-    private router:Router
+    private authSvc: AuthService
   ) { }
 
   ngOnInit(): void {
@@ -33,7 +31,6 @@ export class ProfileComponent implements OnInit {
 
   onLogout(): void{
     this.authSvc.logout();
-    this.router.navigate(['']);
   }
 
 
