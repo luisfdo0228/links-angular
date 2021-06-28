@@ -4,7 +4,7 @@
             <img src="../../../assets/img/logo_transparent.png" width="250" class="rounded mx-auto d-block">
         </div>
         <div class="col-md-8">
-            <button id="logout" class="btn float-right">LOGOUT</button>
+            <button id="logout" (click)="onLogout()" class="btn float-right">LOGOUT</button>
         </div>
     </div>
     <div class="row">
@@ -21,9 +21,6 @@
                 <br/>
                 <span class="info-user">jeff.brown@example.com</span>
             </div>
-            
-            <!-- <span>jeff.brown@example.com</span> -->
-
         </div>
         <div class="col-md-8 border-right">
             <div id="div-links" class="p-3 py-5">

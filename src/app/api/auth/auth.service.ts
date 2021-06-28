@@ -16,8 +16,8 @@ export class AuthService {
   constructor(
     private http:HttpClient
   ) {
-    this.checkToken()
-   }
+    // this.checkToken()
+  }
 
 
 
@@ -38,7 +38,6 @@ export class AuthService {
               .post<UserResponse>(`${environment.API_URL}/login`, authData)
               .pipe( map( (res:UserResponse) => {
                       this.saveToken(res.token)
-                      this.loggedIn.next(true);
                       return res;
                     }),
                     catchError( (err)=> this.handlerError(err)  )
@@ -69,24 +68,22 @@ export class AuthService {
   }
 
 
-  private checkToken():void{
-    const userToken = localStorage.getItem('token');
-    // const isExpired = helper.isTokenExpired('eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI1NGE4Y2U2MThlOTFiMGIxMzY2NWUyZjkiLCJpYXQiOiIxNDI0MTgwNDg0IiwiZXhwIjoiMTQyNTM5MDE0MiJ9.yk4nouUteW54F1HbWtgg1wJxeDjqDA_8AhUPyjE5K0U')
-    if(userToken){
-      const isExpired = false
-      this.logout()
-    } else {
-      const isExpired = true
-      this.loggedIn.next(true);
-    }
-
-    
-
-    // set userIsLogged = isExpired
-  }
+  // private checkToken():void{
+  //   const userToken = localStorage.getItem('token');
+  //   // const isExpired = helper.isTokenExpired('eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI1NGE4Y2U2MThlOTFiMGIxMzY2NWUyZjkiLCJpYXQiOiIxNDI0MTgwNDg0IiwiZXhwIjoiMTQyNTM5MDE0MiJ9.yk4nouUteW54F1HbWtgg1wJxeDjqDA_8AhUPyjE5K0U')
+  //   if(userToken){
+  //     const isExpired = false
+  //     // this.logout()
+  //   } else {
+  //     const isExpired = true
+  //     this.loggedIn.next(true);
+  //   }
+  //   // set userIsLogged = isExpired
+  // }
 
   private saveToken(token: string):void{
     localStorage.setItem('token', token)
+    this.loggedIn.next(true);
     // set userIsLogged = false
   }
 
