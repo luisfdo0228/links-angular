@@ -37,7 +37,7 @@ export class AuthService {
    */
   login(authData:User): Observable<UserResponse | void>{
     return this.http
-              .post<UserResponse>(`${environment.API_URL}/login`, authData)
+              .post<UserResponse>(`${environment.apiUrl}/login`, authData)
               .pipe( map( (user:UserResponse) => {
                       this.saveLocalStorage(user.token);
                       this.changeLoginStatusSubject.next(true);
@@ -56,7 +56,7 @@ export class AuthService {
    */
   register(authData:UserSignup): Observable<UserResponseRegister | void>{
     return this.http
-              .post<UserResponseRegister>(`${environment.API_URL}/register`, authData)
+              .post<UserResponseRegister>(`${environment.apiUrl}/register`, authData)
               .pipe( map( (user:UserResponseRegister) => {
                       return user;
                     }),
