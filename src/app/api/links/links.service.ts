@@ -18,7 +18,7 @@ export class LinksService {
 
   create(authData:LinksCreate): Observable<Links | void>{
     return this.http
-              .post<Links>(`${environment.API_URL}/links`, authData)
+              .post<Links>(`${environment.apiUrl}/links`, authData)
               .pipe( map( (user:Links) => {
                       return user;
                     }),
@@ -29,7 +29,7 @@ export class LinksService {
 
 
   // delete(id: any): Observable<any> {
-  //   return this.http.delete<any>(`${environment.API_URL}links/${id}`, {
+  //   return this.http.delete<any>(`${environment.apiUrl}links/${id}`, {
   //     headers: {'Content-Type':'application/json','Token':'213123adsdsa21123ww'}
   //   });
   // }
@@ -41,7 +41,7 @@ export class LinksService {
   //   let headers = new HttpHeaders();
   //   headers = headers.set('Content-Type', 'application/json; charset=utf-8');
 
-  //   return this.http.delete<string>(`${environment.API_URL}links/${tripId}`,  httpOptionsPlain);
+  //   return this.http.delete<string>(`${environment.apiUrl}links/${tripId}`,  httpOptionsPlain);
   // }
 
 
